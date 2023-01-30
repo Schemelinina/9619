@@ -70,3 +70,17 @@ println(" ")
 #Iteration and Plotting (code to be corrected)
 using Plots
 
+#Path for k
+z::Float64=1.0
+α::Float64 = 1/3
+β::Float64 = 0.96
+
+using Plots
+ts_length = 20
+t_grid=LinRange(1,20,20)
+k_old=k_ss
+for i in 1:ts_length
+k_new[i] = α*β*1.05*z*k_old^α [i-1]
+end
+plot(k_new, color="blue")
+
