@@ -1,5 +1,5 @@
-% Iteration code_problem 1
-% Written by Irina Shchemelinina
+% Iteration code_problem 1 (redundant)
+% Written by Irina Shchemelinina 
 
 clear all
 % Set parameters
