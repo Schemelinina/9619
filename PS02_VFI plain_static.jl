@@ -1,5 +1,5 @@
 ##PS_02 VFI plain..This code needs correction, I used different sources from Internet to compile it... 
-#I assumed x=0.0817 as found in a separate attached code and using static optimization problem for l.
+#I assumed x=0.0817 as found in a separate attached code. Optimal labour is solved for implicitly using static optimization problem for l. So we assume that at each time period the household chooses labor optimally given the current values of the state variables.
 
 using Parameters
 @with_kw struct Par
@@ -44,14 +44,14 @@ println(" ")
 #Define utility function
 function utility(k, kop, l, par::Par)
     @unpack z, α, δ, η, σ, x = par
-    c = z * l * k.^α .- kop .+ k .* (1 .- δ)
+    c = z * l.^(1-α) * k.^α .- kop .+ k .* (1 .- δ)
     return c.^(1 - σ) ./ (1 - σ) .- x / (1 + η)
 end
 
 # Define grid for capital
 function K_grid(n_k, par::Par)
     k_ss, _, _, _, _, _ = steady(par)
-    k_grid = range(1E-5, 2*k_ss; length=n_k) # Equally spaced grid between 0 and 2*k_ss
+    k_grid = range(1E-5, 2*k_ss; length=n_k) # Equally spaced grid between 10^-5 and 2*k_ss
     return k_grid
 end
 
@@ -102,8 +102,7 @@ k_grid = K_grid(n_k, par)
 
 # Plot results
 gr()
-plot(k_grid, V, linewidth=3, title="Value Function", legend=(0.75, 0.2),
-     foreground_color_legend = nothing, background_color_legend = nothing)
+plot(k_grid, V, title="Value Function", legend=(0.75, 0.2))
 plot!(k_grid, G_kop, title="Capital Policy Function")
 plot!(k_grid, G_c, title="Consumption Policy Function")
 
