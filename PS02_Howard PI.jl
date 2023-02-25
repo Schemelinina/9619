@@ -1,4 +1,4 @@
-##PS02 Howard's policy iterations (I used Internet to build it); still some errors with plotting
+##PS02 Howard's policy iterations (I used Internet to build it); labour was assumed to be fixed at l_ss to simplify iterations
 
 using Parameters
 using Plots
@@ -38,7 +38,7 @@ function howard_policy_iteration(par::Par)
 
     # Define utility function
     function utility(k, kop, l)
-        c = z * l * k^α - kop + k * (1 - δ)
+        c = z * l.^(1-α) * k^α - kop + k * (1 - δ)
         return c^(1 - σ) / (1 - σ) - x / (1 + η)
     end
 
