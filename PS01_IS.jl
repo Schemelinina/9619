@@ -71,7 +71,7 @@ println(" ")
 using Plots
 
 # Set up the x-axis for the plots
-k_grid = collect(range(0.001, stop=k_ss, length=100))
+k_grid = collect(range(0.001, stop=2*k_ss, length=100))
 
 # Plot the old steady state
 
