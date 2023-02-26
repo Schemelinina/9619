@@ -57,21 +57,21 @@ function howard_policy_iteration(par::Par)
         V_updates = 0
 
         # Loop over grid points
-        for (idx, k) in enumerate(k_grid)
+        for (index, k) in enumerate(k_grid)
             # Initialize current value and policy functions
-            V_current = V[idx]
-            G_kop_current = G_kop[idx]
-            G_c_current = G_c[idx]
+            V_current = V[index]
+            G_kop_current = G_kop[index]
+            G_c_current = G_c[index]
 
             # Loop over possible values of k'
             V_k = zeros(n_k)
-            for (jdx, kp) in enumerate(k_grid)
-                V_k[jdx] = utility(k, kp, l_ss) + β * V[jdx]
+            for (j, kp) in enumerate(k_grid)
+                V_k[j] = utility(k, kp, l_ss) + β * V[j]
             end
 
                           # Update value and policy functions
-            V_new, k_idx = findmax(V_k)
-            G_kop_new = k_grid[k_idx]
+            V_new, k_index = findmax(V_k)
+            G_kop_new = k_grid[k_index]
             G_c_new = z * k^α * l_ss + (1 - δ) * k - G_kop_new
 
             # Update distance and value updates
@@ -80,9 +80,9 @@ function howard_policy_iteration(par::Par)
 
             # Update value and policy functions if the distance condition is
             if V_new > V_current
-                V[idx] = V_new
-                G_kop[idx] = G_kop_new
-                G_c[idx] = G_c_new
+                V[index] = V_new
+                G_kop[index] = G_kop_new
+                G_c[index] = G_c_new
             end
                 end
     
