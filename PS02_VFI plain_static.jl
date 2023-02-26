@@ -90,7 +90,7 @@ function VFI(k_grid, par::Par)
         iter += 1
     end
     if iter == max_iter
-        error("Error in VFI: Maximum number of iterations reached.")
+        error("Error in VFI")
     end
     return V_new, G_kop, G_c
 end
@@ -102,7 +102,7 @@ k_grid = K_grid(n_k, par)
 
 # Plot results
 gr()
-plot(k_grid, V, title="Value Function", legend=(0.75, 0.2))
+plot(k_grid, V, title="Value Function")
 plot!(k_grid, G_kop, title="Capital Policy Function")
 plot!(k_grid, G_c, title="Consumption Policy Function")
 
