@@ -69,7 +69,7 @@ println(" ")
 
 
 using Plots
-
+gr()
 # Set up the x-axis for the plots
 k_grid = collect(range(0.001, stop=2*k_ss, length=100))
 
@@ -117,7 +117,8 @@ end
 
 
 # Plotting new path
-
+using Plots
+gr()
 plot(1:length(k_path), [k_path, c_path],
     label=["Capital" "Consumption"],
     title="Paths from old to new steady state")
