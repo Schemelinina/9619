@@ -132,7 +132,7 @@ end
     n_k_fine::Int64 = 1000                      # Size of fine grid for interpolation
     min_value = 1E-5
     max_value = 2 * k_ss
-    k_grid = Make_Grid_k(n_k, θ_k, par, min_value, max_value, "Poly")  # k_grid for model solution
+    k_grid = Make_Grid_k(n_k, θ_k, par, min_value, max_value)  # k_grid for model solution
     
     #k_grid_fine = Make_Grid_k(n_k_fine, 1, par)  # Fine grid for interpolation 
     θ_a::Float64    = 1.5                        # Curvature of a_grid
@@ -140,8 +140,8 @@ end
     n_a_fine::Int64 = 1000 
     a_min::Float64 = 0   
     a_max = 2 * k_ss 
-    a_grid          = Make_Grid_a(n_a,θ_a,a_min,a_max, "Poly")  # a_grid for model solution
-    #a_grid_fine     = Make_Grid1_a(n_a_fine,1,par.a_min,a_max,"Poly")  # Fine grid for interpolation
+    a_grid          = Make_Grid_a(n_a,θ_a,a_min,a_max)  # a_grid for model solution
+    #a_grid_fine     = Make_Grid1_a(n_a_fine,1,par.a_min,a_max)  # Fine grid for interpolation
     # Productivity process
     n_ϵ       = 20                               # Size of ϵ_grid
     MP_ϵ      = Rouwenhorst95(par.ρ,par.σ,n_ϵ)       # Markov Process for ϵ
